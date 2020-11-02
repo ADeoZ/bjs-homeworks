@@ -37,8 +37,8 @@ function getAverageMark(marks){
 }
 
 function askDrink(name,dateOfBirthday){
-    birthdayYear = dateOfBirthday.getFullYear();
-    currentYear = new Date().getFullYear();
+    let birthdayYear = dateOfBirthday.getFullYear();
+    let currentYear = new Date().getFullYear();
     
     if ((currentYear - birthdayYear) >= 18) {
         return `Не желаете ли олд-фэшн, ${name}?`;
