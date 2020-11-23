@@ -17,12 +17,10 @@ function compareArrays(arr1, arr2) {
     return arr1.every((n, i) => n === arr2[i]) && arr1.length === arr2.length;
 }
 
-function memorize(func, lim) {
-    const fn = func;
-    const limit = lim;
+function memorize(fn, limit) {
     const memory = [];
 
-    function inner(...args) {
+    return function (...args) {
         const res = memory.find(cell => compareArrays(cell.args, args));
         if (res) {
             return res.result;
@@ -41,8 +39,6 @@ function memorize(func, lim) {
 
         return newRes;
     }
-
-    return inner;
 }
 
 function testCase(func, timer) {
@@ -50,8 +46,7 @@ function testCase(func, timer) {
 
     console.time(timer);
     for (let i = 0; i < 100; i++) {
-        exampleArray.forEach(item => func.apply(null, item));
+        exampleArray.forEach(item => func(...item));
     }
     console.timeEnd(timer);
-
 }
